@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Django: Run Server",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/todo_app/manage.py",
+            "args": [
+                "runserver"
+            ],
+            "django": true
+        }
+    ]
+}

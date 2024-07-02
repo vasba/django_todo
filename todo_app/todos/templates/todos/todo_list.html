@@ -1,0 +1,13 @@
+<h1>Todo List</h1>
+<a href="{% url 'add_todo_item' %}" class="btn btn-primary">Add New Todo</a>
+<form action="{% url 'logout' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+<ul>
+{% for item in items %}
+    <li>{{ item.title }}: {{ item.description }}
+        <a href="{% url 'remove_todo_item' item.id %}" class="btn btn-danger">Remove</a>
+    </li>
+{% endfor %}
+</ul>
