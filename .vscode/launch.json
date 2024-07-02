@@ -10,6 +10,20 @@
                 "runserver"
             ],
             "django": true
+        },
+        {
+            "name": "Django: Run tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/todo_app/manage.py",
+            "args": [
+                "test",
+                "todos.tests"
+            ],
+            "django": true,
+            "env": {
+                "DJANGO_SETTINGS_MODULE": "todo_app.settings"
+            }
         }
     ]
 }
