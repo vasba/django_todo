@@ -7,6 +7,7 @@ This project is a simple Todo application using Django, Docker and containerized
 ### Prerequisites
 
 - python3
+- Django
 - Docker
 - Docker Compose
 
@@ -16,6 +17,7 @@ This project is a simple Todo application using Django, Docker and containerized
 
 ```
 git clone <repository-url>
+cd django_todo
 ```
 
 2. Change default credentials for PostgreSQL
@@ -46,7 +48,7 @@ Then perform the commands below.
 
 WARNING!!!
 
-PostgresSql saves data under docker volume postgres-data, If you remove it the above commands needs to be redone.
+PostgreSql saves data under docker volume postgres-data, If you remove it the above commands needs to be redone.
 
 4. Create users
 
@@ -59,7 +61,27 @@ Go to the "Users" section and click "Add User". Fill in the required fields and 
 
 7. Start creating TODOs
 
-## Testing
+8. Shut down the webservice
+
+```
+    docker-compose down
+```
+
+## Development
+
+Warning!
+
+The development will use a local sqlite database but the containarized version will use PostgreSQL.
+
+If you want to use PostgresSQL during development change to
+
+```
+    DATABASES = DATABASES_POSTGRES
+```
+
+in [settings.py](todo_app/todo_app/settings.py#L95)
+
+Remember to change the database settings at [settings.py#L84](todo_app/todo_app/settings.py#L84) to the one you used when installing your local PostgreSQL
 
 Clone the repository
 
@@ -70,7 +92,7 @@ Clone the repository
 Switch to folder where code have been cloned, default above is django_todo
 
 ```
-    cd django_todo/todo_app
+    cd django_todo
 ```
 
 Install requirements
@@ -79,7 +101,23 @@ Install requirements
     pip install -r requirements.txt
 ```
 
-Run Tests
+or 
+
+```
+    python3 -m pip install -r requirements.txt
+```
+
+Switch to app project folder
+
+```
+    cd todo_app
+```
+
+The app name is todos and its code located under todos folder.
+
+### Testing
+
+Run tests as below while you are in the project folder todo_app
 
 ```
     python3 manage.py test todos.tests
