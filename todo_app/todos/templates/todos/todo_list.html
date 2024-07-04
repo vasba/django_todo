@@ -1,18 +1,18 @@
 <h1>Todo List</h1>
-<a href="{% url 'add_todo_item' %}" class="btn btn-primary">Add New Todo</a>
+<a href="{% url 'add_todo_item' %}" class="btn btn-primary">{{ BUTTON_LABELS.add_new_todo }}</a>
 <form action="{% url 'logout' %}" method="post" style="display:inline;">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Logout</button>
+    <button type="submit" class="btn btn-danger">{{ BUTTON_LABELS.logout }}</button>
 </form>
 <ul>
 {% for item in items %}
     <li>{{ item.title }}: {{ item.description }}
         {% if item.completed %}
-            <span>Completed</span>
+            <span>{{ BUTTON_LABELS.completed }}</span>
         {% else %}
-            <a href="{% url 'toggle_todo_item' item.id %}" class="btn btn-success">Mark as completed</a>
+            <a href="{% url 'toggle_todo_item' item.id %}" class="btn btn-success">{{ BUTTON_LABELS.mark_as_completed }}</a>
         {% endif %}
-        <a href="{% url 'remove_todo_item' item.id %}" class="btn btn-danger">Remove</a>
+        <a href="{% url 'remove_todo_item' item.id %}" class="btn btn-danger">{{ BUTTON_LABELS.remove }}</a>
     </li>
 {% endfor %}
 </ul>
