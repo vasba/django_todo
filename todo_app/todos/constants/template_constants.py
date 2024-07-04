@@ -5,6 +5,7 @@ BUTTON_LABELS = {
     'remove': 'Remove',
     'add': 'Add',
     'completed': 'Completed',
+    'search': 'Search',
 }
 
 HOME = 'Home'

@@ -4,6 +4,13 @@
     {% csrf_token %}
     <button type="submit" class="btn btn-danger">{{ BUTTON_LABELS.logout }}</button>
 </form>
+<br> <br>
+<form method="get" action="{% url 'list_todos' %}">
+    <input type="text" name="title_search" value="{{ title_query }}" placeholder="Search by title...">
+    <input type="text" name="description_search" value="{{ description_query }}" placeholder="Search by description...">
+    <button type="submit">{{ BUTTON_LABELS.search }}</button>
+</form>
+
 <ul>
 {% for item in items %}
     <li>{{ item.title }}: {{ item.description }}
