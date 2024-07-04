@@ -5,7 +5,7 @@ from .forms import TodoItemForm
 
 @login_required
 def list_todo_items(request):
-    items = TodoItem.objects.filter(user=request.user) 
+    items = TodoItem.objects.filter(user=request.user).order_by('completed')
     return render(request, 'todos/todo_list.html', {'items': items})
 
 @login_required
