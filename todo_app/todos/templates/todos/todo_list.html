@@ -7,6 +7,11 @@
 <ul>
 {% for item in items %}
     <li>{{ item.title }}: {{ item.description }}
+        {% if item.completed %}
+            <span>Completed</span>
+        {% else %}
+            <a href="{% url 'toggle_todo_item' item.id %}" class="btn btn-success">Mark as completed</a>
+        {% endif %}
         <a href="{% url 'remove_todo_item' item.id %}" class="btn btn-danger">Remove</a>
     </li>
 {% endfor %}

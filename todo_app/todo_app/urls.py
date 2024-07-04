@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
-from todos.views import list_todo_items, add_todo_item, remove_todo_item
+from todos.views import list_todo_items, add_todo_item, remove_todo_item, toggle_todo_item
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),  # Include default auth URL
     path('remove_todo_item/<int:item_id>/', remove_todo_item, name='remove_todo_item'),
+    path('todo/toggle/<int:item_id>/', toggle_todo_item, name='toggle_todo_item'),
 ]

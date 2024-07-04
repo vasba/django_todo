@@ -1,4 +1,4 @@
-<a href="{% url 'list-todos' %}" class="btn btn-primary">Home</a>
+<a href="{% url 'list_todos' %}" class="btn btn-primary">Home</a>
 <form method="post" action="{% url 'add_todo_item' %}">
     {% csrf_token %}
     {% for field in form %}

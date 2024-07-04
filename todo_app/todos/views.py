@@ -16,7 +16,7 @@ def add_todo_item(request):
             new_item = form.save(commit=False)
             new_item.user = request.user
             new_item.save()
-            return redirect('list-todos')
+            return redirect('list_todos')
     else:
         form = TodoItemForm()
     return render(request, 'todos/add_todo_item.html', {'form': form})
@@ -25,4 +25,11 @@ def add_todo_item(request):
 def remove_todo_item(request, item_id):
     item = get_object_or_404(TodoItem, id=item_id, user=request.user)
     item.delete()
-    return redirect('list-todos')
+    return redirect('list_todos')
+
+@login_required
+def toggle_todo_item(request, item_id):
+    item = get_object_or_404(TodoItem, id=item_id, user=request.user)
+    item.completed = not item.completed
+    item.save()
+    return redirect('list_todos')
