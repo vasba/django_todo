@@ -22,7 +22,7 @@ from todos.views import list_todo_items, add_todo_item, remove_todo_item
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', list_todo_items, name='list-todos'),
+    path('', list_todo_items, name='list_todos'),
     path('add/', add_todo_item, name='add_todo_item'),  # New URL for adding todo items
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),  # Include default auth URL
