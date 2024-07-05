@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Todo List</h1>
 <a href="{% url 'add_todo_item' %}" class="btn btn-primary">{{ BUTTON_LABELS.add_new_todo }}</a>
 <form action="{% url 'logout' %}" method="post" style="display:inline;">
@@ -23,3 +26,4 @@
     </li>
 {% endfor %}
 </ul>
+{% endblock %}

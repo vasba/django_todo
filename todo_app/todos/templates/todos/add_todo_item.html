@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <a href="{% url 'list_todos' %}" class="btn btn-primary">{{ HOME }}</a>
 <form method="post" action="{% url 'add_todo_item' %}">
     {% csrf_token %}
@@ -8,3 +11,4 @@
     <br> <br>
     <button type="submit">{{ BUTTON_LABELS.add }}</button>
 </form>
+{% endblock %}
