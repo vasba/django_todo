@@ -2,27 +2,39 @@
 
 {% block content %}
 <h1>Todo List</h1>
-<a href="{% url 'add_todo_item' %}" class="btn btn-primary">{{ BUTTON_LABELS.add_new_todo }}</a>
+<a href="{% url 'add_todo_item' %}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ BUTTON_LABELS.add_new_todo }}">
+    <i class="bi bi-plus-circle"></i> 
+</a>
 <form action="{% url 'logout' %}" method="post" style="display:inline;">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger">{{ BUTTON_LABELS.logout }}</button>
+    <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ BUTTON_LABELS.logout }}">
+        <i class="bi bi-box-arrow-right"></i>
+    </button>
 </form>
 <br> <br>
 <form method="get" action="{% url 'list_todos' %}">
     <input type="text" name="title_search" value="{{ title_query }}" placeholder="Search by title...">
     <input type="text" name="description_search" value="{{ description_query }}" placeholder="Search by description...">
-    <button type="submit">{{ BUTTON_LABELS.search }}</button>
+    <button type="submit" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ BUTTON_LABELS.search }}"> 
+        <i class="bi bi-search"></i>
+    </button>
 </form>
 
 <ul>
 {% for item in items %}
     <li>{{ item.title }}: {{ item.description }}
         {% if item.completed %}
-            <span>{{ BUTTON_LABELS.completed }}</span>
+            <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ BUTTON_LABELS.completed }}">
+                <i class="bi bi-check-circle-fill completed-icon"></i> 
+            </span>
         {% else %}
-            <a href="{% url 'toggle_todo_item' item.id %}" class="btn btn-success">{{ BUTTON_LABELS.mark_as_completed }}</a>
+            <a href="{% url 'toggle_todo_item' item.id %}" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ BUTTON_LABELS.mark_as_completed }}"">
+                <i class="bi bi-check-circle"></i>
+            </a>
         {% endif %}
-        <a href="{% url 'remove_todo_item' item.id %}" class="btn btn-danger">{{ BUTTON_LABELS.remove }}</a>
+        <a href="{% url 'remove_todo_item' item.id %}" class="btn btn-danger"  data-bs-toggle="tooltip" data-bs-placement="top" title="{{ BUTTON_LABELS.remove }}">
+            <i class="bi bi-trash"></i>
+        </a>
     </li>
 {% endfor %}
 </ul>
